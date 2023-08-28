@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static  %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Social</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static "simplesocial/css/bootstrap.min.css" %}">
+    <!-- Medium Style -->
+    
+    <!-- Custom CSS -->
+    <!-- <link rel="stylesheet" href="{% static "css/master.css" %}">         -->
+    <!-- <link rel="stylesheet" href="{% static "simplesocial/css/master.css" %}"> -->
+    
+
+    <!-- Fonts -->
+</head>
+<body>
+    <nav class="navbar bg-light navbar-expand-sm navbar-light mynav" role="navigation" id="navbar">
+        <div class="container">
+            <a class="navbar-brand bigbrand mynav" href="{% url 'home' %}">Star Social</a>
+                <ul class="nav navbar-nav  navbar-right">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'posts:create' %}">Post</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'groups:all' %}">Groups</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'groups:create' %}">Create Group</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}">Logout</a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'groups:all' %}">Groups</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Log In</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a></li>
+                
+                      {% endif %}
+                 </ul>
+        </div>
+
+    </nav>
+    <div class="container mycontent">
+        {% block  content%}
+
+        {% endblock  %}
+    </div>
+    
+</body>
+    <script src="{% static "simplesocial/js/master.js"%}" type="text/javascript" ></script>
+
+</html>
+
+
